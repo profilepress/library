@@ -2,7 +2,7 @@
 
 add_filter('ppress_registration_validation', function ($reg_errors, $form_id, $user_data) {
 
-    $valid_email_domain = 'ventura.aero';
+    $valid_email_domain = 'wordpress.test';
 
     if(!empty($user_data['user_email'])) {
 
