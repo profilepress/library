@@ -1,6 +1,9 @@
+<?php
+
 //Automatically Login user after Checkout
 
 add_action('ppress_order_completed', function( $order) {
+   
    $user_id = $order->get_customer()->get_user_id();
    
    if(!is_user_logged_in()) {
