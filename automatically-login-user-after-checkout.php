@@ -2,12 +2,4 @@
 
 //Automatically Login user after Checkout
 
-add_action('ppress_order_completed', function( $order) {
-   
-   $user_id = $order->get_customer()->get_user_id();
-   
-   if(!is_user_logged_in()) {
-       wp_set_auth_cookie($user_id, true);
-       wp_set_current_user($user_id);
-   }
-});
+add_filter('ppress_autologin_after_checkout', '__return_true');
