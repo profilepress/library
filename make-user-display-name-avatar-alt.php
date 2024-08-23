@@ -8,7 +8,7 @@ add_filter('ppress_avatar_img_alt', function($alt, $id_or_email) {
     }
 
     if($user instanceof \WP_User) {
-        $alt = 'alt="'.$user->display_name. '"';
+        $alt = ' alt="'.$user->display_name. '"';
     }
 
     return $alt;
