@@ -2,14 +2,11 @@
 
 use ProfilePress\Core\Membership\Models\Customer\CustomerFactory;
 use ProfilePress\Core\Membership\Models\Subscription\SubscriptionStatus;
+use ProfilePress\Core\Membership\Repositories\CustomerRepository;
 
-add_action('init', function () {
-    if ( ! wp_next_scheduled('check_profilepress_subscription_status')) {
-        wp_schedule_event(time(), 'hourly', 'check_profilepress_subscription_status');
-    }
+add_action('admin_init', function () {
+    check_ppress_subscription_status_for_users();
 });
-
-add_action('check_profilepress_subscription_status', 'check_ppress_subscription_status_for_users');
 
 /**
  * Function to check subscription status for registered users in batches.
@@ -54,6 +51,10 @@ function check_ppress_subscription_status_for_users()
                 if ( ! $has_active_subscription && ! user_can($user_id, 'manage_options')) {
 
                     wp_delete_user($user_id);
+
+                    CustomerRepository::init()->delete(
+                        CustomerFactory::fromUserId($user_id)->get_id()
+                    );
                 }
             }
         }
