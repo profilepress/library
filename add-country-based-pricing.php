@@ -1,3 +1,5 @@
+<?php
+
 // ProfilePress Geo-Based Pricing
 
 add_action( 'init', function () {
