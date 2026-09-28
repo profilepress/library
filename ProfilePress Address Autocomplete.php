@@ -24,8 +24,7 @@ function pp_enqueue_autocomplete_loader() {
     wp_add_inline_script('google-maps-loader', <<<JS
         document.addEventListener("DOMContentLoaded", function () {
     const loader = new google.maps.plugins.loader.Loader({
-        //apiKey: "AIzaSyAy95TS0OGZcUSufSpr4DhYAa8AjfUhidM",
-        apiKey: "AIzaSyA9aKGCwTHxhmfc6A0BTBLl8wfh9FnbcUY",
+        apiKey: "**8",
         version: "weekly",
         libraries: ["places"]
     });
